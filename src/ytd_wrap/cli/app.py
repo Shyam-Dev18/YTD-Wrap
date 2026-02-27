@@ -25,7 +25,6 @@ from ytd_wrap.cli.console import console
 from ytd_wrap.exceptions import YtdWrapError
 from ytd_wrap.version import __version__
 
-
 # ---------------------------------------------------------------------------
 # Argument parser
 # ---------------------------------------------------------------------------
@@ -46,7 +45,7 @@ def _build_parser() -> argparse.ArgumentParser:
         "-V",
         "--version",
         action="version",
-        version=f"%(prog)s {__version__}",
+        version=f"%%(prog)s {__version__}",
     )
     parser.add_argument(
         "target",
@@ -55,7 +54,6 @@ def _build_parser() -> argparse.ArgumentParser:
         help="YouTube URL to download, or 'doctor' to run diagnostics.",
     )
     return parser
-
 
 # ---------------------------------------------------------------------------
 # Command dispatch (skeleton — no business logic)
@@ -119,13 +117,11 @@ def _handle_download(url: str) -> int:
     console.print("\n[bold green]Download complete.[/bold green]")
     return exit_codes.SUCCESS
 
-
 def _handle_doctor() -> int:
     """Dispatch the ``doctor`` diagnostics command."""
     from ytd_wrap.cli.doctor import run_doctor
 
     return run_doctor()
-
 
 # ---------------------------------------------------------------------------
 # Main entry point
@@ -160,7 +156,6 @@ def main(argv: list[str] | None = None) -> int:
 
     return _handle_download(target)
 
-
 # ---------------------------------------------------------------------------
 # Script-level error boundary
 # ---------------------------------------------------------------------------
@@ -182,7 +177,7 @@ def cli() -> None:
     except KeyboardInterrupt:
         console.print("\n[yellow]Aborted by user.[/yellow]")
         sys.exit(exit_codes.KEYBOARD_INTERRUPT)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         console.print(
             "[bold red]Unexpected error.[/bold red] "
             "Please report this issue.\n"
