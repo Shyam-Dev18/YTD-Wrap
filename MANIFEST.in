@@ -1,0 +1,7 @@
+include README.md
+include pyproject.toml
+include LICENSE
+recursive-include src/ytd_wrap *.py
+include src/ytd_wrap/py.typed
+prune tests
+global-exclude __pycache__ *.py[cod]

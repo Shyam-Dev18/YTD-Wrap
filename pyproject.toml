@@ -1,0 +1,122 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ytd-wrap"
+version = "0.1.0"
+description = "ytd-wrap — Professional YouTube video downloader with interactive CLI, rich UI, and robust error handling."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Shyam Darshanam", email = "darshanamshyam17@gmail.com" },
+]
+keywords = ["youtube", "downloader", "yt-dlp", "cli", "interactive", "rich", "questionary", "cross-platform"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Typing :: Typed",
+]
+dependencies = [
+    "yt-dlp>=2024.1.0",
+    "rich>=13.0.0",
+    "questionary>=2.0.0",
+]
+
+[project.scripts]
+ytd-wrap = "ytd_wrap.cli.app:cli"
+
+[project.urls]
+Homepage = "https://github.com/Shyam-Dev18/YTD-Wrap"
+Repository = "https://github.com/Shyam-Dev18/YTD-Wrap"
+Issues = "https://github.com/Shyam-Dev18/YTD-Wrap/issues"
+
+# ---------------------------------------------------------------------------
+# Tool configuration
+# ---------------------------------------------------------------------------
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ytd_wrap"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/ytd_wrap/py.typed" = "ytd_wrap/py.typed"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    ".github",
+    ".pytest_cache",
+    "tests",
+    "**/__pycache__",
+]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unreachable = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_any_generics = true
+no_implicit_optional = true
+no_implicit_reexport = true
+show_error_codes = true
+mypy_path = "src"
+
+[[tool.mypy.overrides]]
+module = ["yt_dlp.*", "questionary.*"]
+ignore_missing_imports = true
+
+[tool.ruff]
+target-version = "py310"
+src = ["src", "tests"]
+line-length = 99
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "TCH",  # flake8-type-checking
+    "RUF",  # ruff-specific rules
+    "S",    # flake8-bandit (security)
+    "T20",  # flake8-print (no print in non-CLI)
+    "ANN",  # flake8-annotations
+    "C4",   # flake8-comprehensions
+    "PTH",  # flake8-use-pathlib
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "ANN"]
+"src/ytd_wrap/cli/**/*.py" = ["T20"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["ytd_wrap"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra -q --strict-markers"
+markers = [
+    "unit: Pure unit tests with no side effects",
+    "integration: Integration tests (may touch filesystem)",
+]
