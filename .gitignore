@@ -1,0 +1,83 @@
+# Byte-compiled / optimised / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-wheel-metadata/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.cover
+*.py,cover
+coverage.xml
+nocover/
+
+# mypy / pyright / pytype
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+.pyre/
+pyrightconfig.json
+.tox/
+.nox/
+__pypackages__/
+.python-version
+
+# Ruff / flake8
+.ruff_cache/
+
+# IDEs & editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Runtime application data
+.ytd-wrap/
+
+# Logs
+*.log
+
+# Temporary download artefacts
+*.part
+*.ytdl
+*.tmp
