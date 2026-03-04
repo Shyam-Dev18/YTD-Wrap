@@ -1,12 +1,14 @@
 # ytd-wrap
 
-> Download videos from social media platforms and direct stream URLs — a friendly wrapper around `yt-dlp`.
+> A multi-platform Python CLI for resilient social-media and direct-stream video acquisition, featuring intelligent format orchestration, interactive quality selection, dependency diagnostics, and robust download/error workflows.
 
 Maintainer: **Shyam Darshanam** ([Shyam-Dev18](https://github.com/Shyam-Dev18))
 
 [![PyPI](https://img.shields.io/pypi/v/ytd-wrap)](https://pypi.org/project/ytd-wrap/)
 [![Python](https://img.shields.io/pypi/pyversions/ytd-wrap)](https://pypi.org/project/ytd-wrap/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+![YTD Wrap Demo](assets/YTDWrapDemo.gif)
 
 ---
 
@@ -18,6 +20,8 @@ Maintainer: **Shyam Darshanam** ([Shyam-Dev18](https://github.com/Shyam-Dev18))
 - **One-command doctor** — verifies all dependencies in one shot
 - **Non-blocking update checks** — notified of new versions once per day
 - **Graceful error handling** — actionable hints for age-restriction, geo-blocks, and missing ffmpeg
+
+![YTD Wrap Info](assets/YTDWrapInfo.png)
 
 ---
 
@@ -60,6 +64,8 @@ Verify the installation:
 ```bash
 ffmpeg -version
 ```
+
+![YTD Wrap FFmpeg Resolver](assets/YTDWrapFFmpegResolver.png)
 
 ---
 
@@ -121,6 +127,8 @@ Checks:
 
 Shows OS-specific install hints if anything is missing.
 
+![YTD Wrap Doctor](assets/YTDWrapDoctor.png)
+
 ---
 
 ## Supported sites
@@ -152,28 +160,13 @@ Files are saved to `~/Downloads/` (falls back to `~/` if Downloads does not exis
 
 ---
 
-## Troubleshooting
+## 🤝 Contributing & Feedback
 
-### `ERROR: Sign in to confirm your age`
-This video is age-restricted.  Sign in to YouTube in your browser, then pass your browser cookies to yt-dlp directly:
-```bash
-yt-dlp --cookies-from-browser chrome "https://..."
-```
+This package is for anyone who wants an easy way to download social media content.
 
-### `ERROR: The uploader has not made this video available in your country`
-The content is geo-blocked.  Use a VPN to access it from a supported region.
+It is currently in the development phase on PyPI.
 
-### `ERROR: ffmpeg is not installed`
-Install ffmpeg (see [Prerequisites](#prerequisites)) and ensure it is on your system `PATH`.
-
-### `postprocessing: error`
-ffmpeg found an incompatible stream.  Try selecting a different format or use `ytd-wrap doctor` to confirm ffmpeg is working.
-
-### `ERROR: This video is available to this channel's members`
-Members-only content requires a session cookie from a subscribed account.
-
-### Download starts but no file appears
-Check `~/.ytd-wrap/logs/ytd-wrap.log` for details.
+Users are welcome to report issues, suggest improvements, and contributors are highly appreciated for helping maintain or resolve errors.
 
 ---
 
