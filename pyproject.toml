@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytd-wrap"
+dynamic = ["version"]
+description = "Simple multi-platform downloader for social media and direct stream/video URLs."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Shyam Darshanam", email = "darshanamshyam17@gmail.com" }]
+requires-python = ">=3.11"
+keywords = ["youtube", "download", "yt-dlp", "video", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Multimedia :: Video",
+]
+dependencies = [
+    "click>=8.1",
+    "rich>=13.0",
+    "questionary>=2.0",
+    "yt-dlp>=2024.1.1",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-mock>=3.12",
+]
+
+[project.scripts]
+ytd-wrap = "ytd_wrap.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Shyam-Dev18/YTD-Wrap"
+"Bug Tracker" = "https://github.com/Shyam-Dev18/YTD-Wrap/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ytd_wrap*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "ytd_wrap.__version__"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
